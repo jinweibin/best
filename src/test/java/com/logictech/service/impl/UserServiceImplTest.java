@@ -1,7 +1,7 @@
 package com.logictech.service.impl;
 
 import com.logictech.BaseTest;
-import com.logictech.entity.dto.UserDTO;
+import com.logictech.entity.po.UserPO;
 import com.logictech.entity.so.AppException;
 import com.logictech.service.UserService;
 import org.junit.Assert;
@@ -23,14 +23,14 @@ public class UserServiceImplTest extends BaseTest {
 
     @Test(expected = DataIntegrityViolationException.class)
     public void addUserError() throws Exception {
-        UserDTO userFailed = new UserDTO();
+        UserPO userFailed = new UserPO();
         userFailed.setQq("shibaishibaishibaishibaishibaishibaishibaishibaishibai");
         userService.addUser(userFailed);
     }
 
     @Test
     public void addUser() throws Exception {
-        UserDTO userDTO = new UserDTO();
+        UserPO userDTO = new UserPO();
         userDTO.setUsername("ceshi");
         userDTO.setPassword("ceshi");
         userDTO.setRealName("ceshi");
@@ -40,14 +40,14 @@ public class UserServiceImplTest extends BaseTest {
 
     @Test(expected = AppException.class)
     public void updateUser() throws Exception {
-        UserDTO userDTO = new UserDTO();
+        UserPO userDTO = new UserPO();
         userDTO.setId(1);
         userDTO.setUsername("ceshi1");
         userDTO.setPassword("ceshi1");
         userDTO.setRealName("ceshi1");
         int count = userService.updateUser(userDTO);
         Assert.assertEquals(1, count);
-        UserDTO userDTOFailed = new UserDTO();
+        UserPO userDTOFailed = new UserPO();
         userDTOFailed.setId(9999999);
         userDTOFailed.setUsername("ceshi1");
         userDTOFailed.setPassword("ceshi1");

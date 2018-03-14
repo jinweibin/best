@@ -1,6 +1,6 @@
 package com.logictech.service.impl;
 
-import com.logictech.entity.dto.UserDTO;
+import com.logictech.entity.po.UserPO;
 import com.logictech.entity.so.AppException;
 import com.logictech.mapper.UserMapper;
 import com.logictech.service.UserService;
@@ -23,17 +23,17 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<UserDTO> listUser() throws Exception {
+    public List<UserPO> listUser() throws Exception {
         return userMapper.selectAll();
     }
 
     @Override
-    public Integer addUser(UserDTO userDTO) throws Exception {
+    public Integer addUser(UserPO userDTO) throws Exception {
         return userMapper.mInsert(userDTO);
     }
 
     @Override
-    public Integer updateUser(UserDTO userDTO) throws Exception {
+    public Integer updateUser(UserPO userDTO) throws Exception {
         Integer update = userMapper.updateByPrimaryKey(userDTO);
         if (update > 0) {
             return update;
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void transactionalUser() throws Exception {
-        UserDTO user = new UserDTO();
+        UserPO user = new UserPO();
         user.setUsername("J.G.Hannibal");
         user.setPassword("123456");
         user.setUserType("1");

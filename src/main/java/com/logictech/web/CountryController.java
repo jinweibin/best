@@ -2,7 +2,7 @@ package com.logictech.web;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.logictech.entity.dto.CountryDTO;
+import com.logictech.entity.po.CountryPO;
 import com.logictech.entity.so.AppException;
 import com.logictech.json.JSON;
 import com.logictech.mapper.CountryMapper;
@@ -24,18 +24,18 @@ public class CountryController {
     private CountryMapper countryMapper;
 
     @RequestMapping("/countries")
-    @JSON(type = CountryDTO.class, include = "countryCode,countryName")
-    public List<CountryDTO> getCities() {
-        List<CountryDTO> countries = countryMapper.selectAll();
+    @JSON(type = CountryPO.class, include = "countryCode,countryName")
+    public List<CountryPO> getCities() {
+        List<CountryPO> countries = countryMapper.selectAll();
         return countries;
     }
 
     @RequestMapping("/countries/{pageNum}/{size}")
     @JSON(type = PageInfo.class, filter = "navigatepageNums,navigateFirstPage,navigateLastPage")
-    @JSON(type = CountryDTO.class, include = "countryCode,countryName")
+    @JSON(type = CountryPO.class, include = "countryCode,countryName")
     public PageInfo getCitiesPage(@PathVariable Integer pageNum, @PathVariable Integer size) throws AppException {
         PageHelper.startPage(pageNum, size);
-        List<CountryDTO> countries = countryMapper.selectAll();
+        List<CountryPO> countries = countryMapper.selectAll();
         return new PageInfo<>(countries);
     }
 }

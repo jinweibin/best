@@ -1,6 +1,6 @@
 package com.logictech.web;
 
-import com.logictech.entity.dto.CityDTO;
+import com.logictech.entity.po.CityPO;
 import com.logictech.mapper.CityMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +19,8 @@ public class CityController {
     private CityMapper cityMapper;
 
     @RequestMapping("/cities")
-    public List<CityDTO> getCities() {
-        List<CityDTO> cities = cityMapper.selectAll();
+    public List<CityPO> getCities() {
+        List<CityPO> cities = cityMapper.selectAll();
         return cities;
     }
 }

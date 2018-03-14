@@ -1,4 +1,4 @@
-package com.logictech.entity.dto;
+package com.logictech.entity.po;
 
 import javax.persistence.Column;
 import java.util.Date;
@@ -7,7 +7,7 @@ import java.util.Date;
  * @author JG.Hannibal
  * @since 2017/11/17 下午2:13
  */
-public class CommonDTO {
+public class CommonPO {
     /**
      * 备注
      */
@@ -31,7 +31,7 @@ public class CommonDTO {
      */
     private String updateBy;
 
-    public CommonDTO() {
+    public CommonPO() {
 
     }
 
@@ -76,7 +76,7 @@ public class CommonDTO {
         this.updateBy = updateBy;
     }
 
-    public CommonDTO(String remark, String createBy, Date createTime, Date updateTime, String updateBy) {
+    public CommonPO(String remark, String createBy, Date createTime, Date updateTime, String updateBy) {
         this.remark = remark;
         this.createBy = createBy;
         this.createTime = createTime;
@@ -86,7 +86,7 @@ public class CommonDTO {
 
     @Override
     public String toString() {
-        return "CommonDTO{" +
+        return "CommonPO{" +
                 "remark='" + remark + '\'' +
                 ", createBy='" + createBy + '\'' +
                 ", createTime='" + createTime + '\'' +

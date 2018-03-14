@@ -1,6 +1,6 @@
 package com.logictech.web;
 
-import com.logictech.entity.dto.UserDTO;
+import com.logictech.entity.po.UserPO;
 import com.logictech.entity.vo.UserVO;
 import com.logictech.mapper.UserMapper;
 import com.logictech.service.UserService;
@@ -27,8 +27,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/users")
-    public List<UserDTO> users() {
-        List<UserDTO> users = userMapper.selectAll();
+    public List<UserPO> users() {
+        List<UserPO> users = userMapper.selectAll();
         return users;
     }
 
@@ -40,12 +40,12 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public Integer save(@Valid @RequestBody UserDTO user) throws Exception {
+    public Integer save(@Valid @RequestBody UserPO user) throws Exception {
         return userService.addUser(user);
     }
 
     @PostMapping(value = "update")
-    public Integer update(@Valid @RequestBody UserDTO user) throws Exception {
+    public Integer update(@Valid @RequestBody UserPO user) throws Exception {
         return userService.updateUser(user);
     }
 

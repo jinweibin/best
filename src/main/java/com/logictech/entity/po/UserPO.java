@@ -1,4 +1,4 @@
-package com.logictech.entity.dto;
+package com.logictech.entity.po;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @since 2017/11/9 上午9:31
  */
 @Table(name = "user_info")
-public class UserDTO extends CommonDTO implements Serializable {
+public class UserPO extends CommonPO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -139,7 +139,7 @@ public class UserDTO extends CommonDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "UserDTO{" +
+        return "UserPO{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -153,7 +153,7 @@ public class UserDTO extends CommonDTO implements Serializable {
                 '}';
     }
 
-    public UserDTO(String username, String password, String userType, Integer enabled, String realName, String qq, String email, String tel, Integer cityId) {
+    public UserPO(String username, String password, String userType, Integer enabled, String realName, String qq, String email, String tel, Integer cityId) {
         this.username = username;
         this.password = password;
         this.userType = userType;
@@ -174,7 +174,7 @@ public class UserDTO extends CommonDTO implements Serializable {
         this.cityId = cityId;
     }
 
-    public UserDTO() {
+    public UserPO() {
 
     }
 }

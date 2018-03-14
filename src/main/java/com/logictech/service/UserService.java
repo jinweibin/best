@@ -1,6 +1,6 @@
 package com.logictech.service;
 
-import com.logictech.entity.dto.UserDTO;
+import com.logictech.entity.po.UserPO;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import java.util.List;
  */
 public interface UserService {
 
-    List<UserDTO> listUser() throws Exception;
+    List<UserPO> listUser() throws Exception;
 
-    Integer addUser(UserDTO userDTO) throws Exception;
+    Integer addUser(UserPO userDTO) throws Exception;
 
-    Integer updateUser(UserDTO userDTO) throws Exception;
+    Integer updateUser(UserPO userDTO) throws Exception;
 
     Integer removeUser(Integer id) throws Exception;
 

@@ -2,7 +2,7 @@ package com.logictech.web;
 
 import com.alibaba.fastjson.JSONObject;
 import com.logictech.BaseTest;
-import com.logictech.entity.dto.UserDTO;
+import com.logictech.entity.po.UserPO;
 import com.logictech.entity.so.AppException;
 import com.logictech.mapper.UserMapper;
 import org.junit.After;
@@ -66,7 +66,7 @@ public class UserControllerTest extends BaseTest {
     @Transactional
     public void save() throws Exception {
         Integer countBeforeSave = userMapper.selectCountByExample(null);
-        UserDTO userDTO = new UserDTO();
+        UserPO userDTO = new UserPO();
         userDTO.setUsername("ceshi");
         userDTO.setPassword("ceshi");
         userDTO.setRealName("ceshi");
@@ -86,7 +86,7 @@ public class UserControllerTest extends BaseTest {
     @Test
     @Transactional
     public void update() throws Exception {
-        UserDTO userDTO = new UserDTO();
+        UserPO userDTO = new UserPO();
         userDTO.setUsername("ceshi1");
         userDTO.setPassword("ceshi1");
         userDTO.setRealName("ceshi1");
@@ -98,7 +98,7 @@ public class UserControllerTest extends BaseTest {
                 .andExpect(jsonPath("$.code").value(1))
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
-        UserDTO userDTOSuccess = new UserDTO();
+        UserPO userDTOSuccess = new UserPO();
         userDTOSuccess.setId(1);
         userDTOSuccess.setUsername("ceshi1");
         userDTOSuccess.setPassword("ceshi1");

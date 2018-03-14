@@ -1,4 +1,4 @@
-package com.logictech.entity.dto;
+package com.logictech.entity.po;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
  * @since 2017/11/9 下午12:20
  */
 @Table(name = "city")
-public class CityDTO {
+public class CityPO {
     @Id
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,17 +47,17 @@ public class CityDTO {
         this.state = state;
     }
 
-    public CityDTO() {
+    public CityPO() {
     }
 
-    public CityDTO(String name, String state) {
+    public CityPO(String name, String state) {
         this.name = name;
         this.state = state;
     }
 
     @Override
     public String toString() {
-        return "CityDTO{" +
+        return "CityPO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", state='" + state + '\'' +
