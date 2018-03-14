@@ -6,11 +6,11 @@ import com.logictech.entity.dto.CountryDTO;
 import com.logictech.entity.so.AppException;
 import com.logictech.json.JSON;
 import com.logictech.mapper.CountryMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 public class CountryController {
 
-    @Autowired
+    @Resource
     private CountryMapper countryMapper;
 
     @RequestMapping("/countries")

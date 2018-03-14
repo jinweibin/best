@@ -5,7 +5,6 @@ import com.logictech.entity.vo.UserVO;
 import com.logictech.mapper.UserMapper;
 import com.logictech.service.UserService;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,7 +20,7 @@ import static com.logictech.App.logger;
 @RestController
 public class UserController {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Resource
