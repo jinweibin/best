@@ -32,5 +32,17 @@ public class HelloController {
     public String getUsersT() {
         return message.concat(bizPropConfig.toString());
     }
+
+    @ResponseBody
+    @RequestMapping("/null")
+    public String getUsersE() {
+        throw new NullPointerException();
+    }
+
+    @ResponseBody
+    @RequestMapping("/out")
+    public String getUsersO() {
+        throw new ArrayIndexOutOfBoundsException();
+    }
 }
     

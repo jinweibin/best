@@ -1,5 +1,6 @@
 package com.logictech.config;
 
+import com.logictech.entity.so.AppException;
 import com.logictech.entity.so.ParamValidException;
 import com.logictech.entity.so.ResultEntity;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -56,6 +57,27 @@ public class GlobalExceptionConfig {
         return exception(ex);
     }
 
+    @ExceptionHandler(AppException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ResultEntity appThrowableException(AppException ex) throws Exception {
+        return new ResultEntity(ex);
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ResultEntity nullThrowableException(Exception ex) throws
+            Exception {
+        AppException unknowEx = new AppException("发生未知错误, 请联系管理员");
+        logger.error(ex.getMessage(), ex);
+        return new ResultEntity(unknowEx);
+    }
+
+    @ExceptionHandler(ArrayIndexOutOfBoundsException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ResultEntity outOfIndexThrowableException(ArrayIndexOutOfBoundsException ex) throws Exception {
+        return nullThrowableException(ex);
+    }
+
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.NOT_IMPLEMENTED)
     public ResultEntity exception(Exception ex) throws Exception {
@@ -71,14 +93,14 @@ public class GlobalExceptionConfig {
                 filters.add(st);
             }
         }
-        final StackTraceElement[] dwStackTrace = new StackTraceElement[filters.size()];
+        final StackTraceElement[] stackTraceElements = new StackTraceElement[filters.size()];
         // 计数器
         Integer i = 0;
         for (StackTraceElement filter : filters) {
-            dwStackTrace[i++] = filter;
+            stackTraceElements[i++] = filter;
         }
-        // 填充dwStackTrace
-        ex.setStackTrace(dwStackTrace);
+        // 填充stackTrace
+        ex.setStackTrace(stackTraceElements);
         ex.printStackTrace();
         logger.error(ex.getMessage(), ex);
         return new ResultEntity(ex);
