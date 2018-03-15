@@ -1,6 +1,7 @@
 package com.logictech.aop;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
 import com.logictech.entity.so.FieldError;
 import com.logictech.entity.so.ParamValidException;
 import org.aspectj.lang.JoinPoint;
@@ -20,8 +21,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
-
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -56,6 +57,16 @@ public class ControllerAop {
         logger.info(HEAD + "HTTP_METHOD : " + request.getMethod());
         logger.info(HEAD + "IP : " + request.getRemoteAddr());
         logger.info(HEAD + "CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        if (joinPoint.getArgs().length == 1) {
+            try {
+                logger.debug(HEAD + "ARGS : " + JSON.toJSON(joinPoint.getArgs()));
+            } catch (JSONException e) {
+                // JSON 转换出错的情况
+                logger.debug(HEAD + "ARGS : " + Arrays.toString(joinPoint.getArgs()));
+            }
+        } else {
+            logger.debug(HEAD + "ARGS : " + Arrays.toString(joinPoint.getArgs()));
+        }
         // =================================
         // 获得切入目标对象
         Object target = joinPoint.getThis();
