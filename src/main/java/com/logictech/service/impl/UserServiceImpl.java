@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 import static com.logictech.config.MessageConfig.get;
@@ -19,19 +20,36 @@ import static com.logictech.config.MessageConfig.get;
 @Service
 @Transactional(rollbackFor = AppException.class)
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
+    /**
+     * 列表
+     * @return
+     * @throws Exception
+     */
     @Override
     public List<UserPO> listUser() throws Exception {
         return userMapper.selectAll();
     }
 
+    /**
+     * 新增
+     * @param userDTO
+     * @return
+     * @throws Exception
+     */
     @Override
     public Integer addUser(UserPO userDTO) throws Exception {
         return userMapper.mInsert(userDTO);
     }
 
+    /**
+     * 更新
+     * @param userDTO
+     * @return
+     * @throws Exception
+     */
     @Override
     public Integer updateUser(UserPO userDTO) throws Exception {
         Integer update = userMapper.updateByPrimaryKey(userDTO);
@@ -42,6 +60,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * 移除
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @Override
     public Integer removeUser(Integer id) throws Exception {
         if (userMapper.deleteByPrimaryKey(id) > 0) {
@@ -51,6 +75,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * 回滚测试
+     * @throws Exception
+     */
     @Override
     public void transactionalUser() throws Exception {
         UserPO user = new UserPO();
