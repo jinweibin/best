@@ -4,9 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.logictech.entity.dto.cnode.CommonResponse;
 import com.logictech.entity.dto.cnode.TopicItem;
 import com.logictech.entity.dto.cnode.TopicsRequest;
+import com.logictech.entity.so.AppException;
 import com.logictech.okhttp.OkHttpSender;
 import com.logictech.service.RemoteAPIService;
 import okhttp3.Response;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 
@@ -14,6 +17,8 @@ import java.io.IOException;
  * @author JG.Hannibal
  * @since 2019-07-02 16:55
  */
+@Service
+@Transactional(rollbackFor = AppException.class)
 public class RemoteAPIServiceImpl implements RemoteAPIService {
     /**
      * 主题首页

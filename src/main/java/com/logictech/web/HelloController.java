@@ -1,6 +1,9 @@
 package com.logictech.web;
 
 import com.logictech.config.BizPropConfig;
+import com.logictech.entity.dto.cnode.CommonResponse;
+import com.logictech.entity.dto.cnode.TopicsRequest;
+import com.logictech.service.RemoteAPIService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 
 /**
  * @author JG.Hannibal
@@ -20,6 +24,9 @@ public class HelloController {
 
     @Resource
     private BizPropConfig bizPropConfig;
+
+    @Resource
+    private RemoteAPIService remoteAPIService;
 
     @RequestMapping("/")
     public String getUsers(Model model) {
@@ -43,6 +50,12 @@ public class HelloController {
     @RequestMapping("/out")
     public String getUsersO() {
         throw new ArrayIndexOutOfBoundsException();
+    }
+
+    @ResponseBody
+    @RequestMapping("/cnode")
+    public CommonResponse cnode() throws IOException {
+        return remoteAPIService.cnodeAPITopics(new TopicsRequest(1, "",2, "12"));
     }
 }
     

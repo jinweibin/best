@@ -45,7 +45,7 @@ public class OkHttpLoggerInterceptor implements Interceptor {
             logger.debug("╔═════════════════════════════════");
             logger.debug("║ 请求方式: {} 请求地址: {}", request.method(), request.url());
             logger.debug("║ 请求时间: {} ", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            logger.debug("║ Content-Type: {}", request.body().contentType());
+            logger.debug("║ Content-Type: {}", request.body() == null ? "" : request.body().contentType());
             logger.debug("║ 请求参数: {}", body);
         }
 

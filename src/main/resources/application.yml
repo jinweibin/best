@@ -22,9 +22,9 @@ spring:
     active: dev
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://xxxx:3306/test?useUnicode=true&characterEncoding=utf-8
-    username: xxx
-    password: xxxx
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 1234
     #=======================
     # 初始化大小，最小，最大
     #=======================

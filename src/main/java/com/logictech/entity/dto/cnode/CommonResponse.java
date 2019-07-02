@@ -22,6 +22,9 @@ public class CommonResponse<T> {
                 '}';
     }
 
+    public CommonResponse() {
+    }
+
     public CommonResponse(boolean success, T data) {
         this.success = success;
         this.data = data;
