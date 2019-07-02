@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.logictech.App.logger;
+import static com.logictech.BestApplication.logger;
 
 /**
  * @author JG.Hannibal

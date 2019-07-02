@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.logictech.App.logger;
+import static com.logictech.BestApplication.logger;
 
 /**
  * @author JG.Hannibal

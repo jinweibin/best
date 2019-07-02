@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.logictech.App.logger;
+import static com.logictech.BestApplication.logger;
 
 /**
  * @author JG.Hannibal

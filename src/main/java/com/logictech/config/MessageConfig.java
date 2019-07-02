@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import static com.logictech.App.logger;
+import static com.logictech.BestApplication.logger;
 
 /**
  * @author JG.Hannibal

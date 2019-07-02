@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         webEnvironment = WebEnvironment.RANDOM_PORT,
-        classes = App.class
+        classes = BestApplication.class
 )
 @Transactional
 @AutoConfigureMockMvc

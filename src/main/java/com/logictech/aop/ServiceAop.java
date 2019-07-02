@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-import static com.logictech.App.logger;
+import static com.logictech.BestApplication.logger;
 
 /**
  * @author JG.Hannibal
